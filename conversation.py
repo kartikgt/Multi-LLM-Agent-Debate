@@ -7,7 +7,7 @@ from getpass import getpass
 
 import os
 
-os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
+os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
 
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
@@ -74,8 +74,8 @@ questions = ["The death penalty is a punishment that fits the crime of murder.Ex
              "The UN has repeatedly failed in its essential mission to promote world peace and human rights.  The wars, genocide and human rights abuses taking place in many Human Rights Council member states (and the UN's failure to stop them) prove this point.  History shows that the United States, not the UN, is the global force for spreading freedom, prosperity, tolerance and peace.  The U.S. should never subvert its national interests to those of the UN. ",
              "It is far more compassionate and effective to encourage people to become self-reliant, rather than allowing them to remain dependent on the government for provisions."]
 
-repo_id1 = "meta-llama/Llama-2-7b-chat-hf"
-repo_id2 = "meta-llama/Llama-2-7b-chat-hf"
+llama_repo = "meta-llama/Llama-2-7b-chat-hf"
+zephyr_repo = "HuggingFaceH4/zephyr-7b-alpha"
 
 epochs = 20
 
@@ -96,5 +96,5 @@ Response from left leaning lawyer: {opinion}
 Your response:  """
 
     op_file = 'response_20_' + str(i) + '.txt'
-    model = Conversation(repo_id1=repo_id1, repo_id2=repo_id2, question=question, template1=template1, template2=template2, op_file=op_file, temperature=0.7, epochs=epochs)
+    model = Conversation(repo_id1=llama_repo, repo_id2=llama_repo, question=question, template1=template1, template2=template2, op_file=op_file, temperature=0.7, epochs=epochs)
     model.converse()
